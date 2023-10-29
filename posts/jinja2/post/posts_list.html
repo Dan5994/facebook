@@ -1,0 +1,8 @@
+{% extends 'post/header.html'%}
+
+{%block content%}
+    {% for post in posts%}
+        <li><a href="/posts/get/{{post.id}}">{{post.title}} </a></li>
+    {% endfor %}
+    <button onclick="window.location.href='new_post'">Создать пост</button>
+{%endblock%}
