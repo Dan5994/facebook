@@ -28,3 +28,5 @@ def update_counter(request):
         2/0
         tr_2 = Post.objects.filter(id=post_2).update(counter=cou_2)
         return HttpResponse('Transaction complete')
+     
+    #  https://api.open-meteo.com/v1/forecast?latitude=53.9&longitude=27.56&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FMoscow&start_date=${start_date}&end_date=${end_date}

@@ -1,5 +1,5 @@
 from .post import PostView
-from .detail_post import DetailPostView
+from .detail_post import PostDetailView
 from .comment import CommentView
 from .detail_comment import DetailCommentView
 from .post_render import FormRender
@@ -15,5 +15,6 @@ all = (
     'FormRender',
     'EditFormRender',
     'EditPostView',
-    'DeletePost'
+    'DeletePost',
+    'PostDetailView'
 )
