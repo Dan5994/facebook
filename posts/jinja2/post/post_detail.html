@@ -1,0 +1,15 @@
+{% extends 'post/header.html'%}
+
+{% block title %}
+
+    <title>Кошелек пользователя {{ post.title }} </title>
+
+{% endblock %}
+
+
+{% block content %}
+    <p>Title: {{ post.title }}, Text: {{ post.text }}</p>
+    <button onclick="window.location.href='update/{{post.id}}'">Edit</button>
+    <button onclick="window.location.href='delete/{{post.id}}'">Delete</button>
+   
+{% endblock %}
