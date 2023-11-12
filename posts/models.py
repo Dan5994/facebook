@@ -21,5 +21,8 @@ class Comment(models.Model):
     created_at = models.DateTimeField(default=datetime.now)
     status = models.CharField(max_length=100, default=CREATED)
 
+    def __str__(self) -> str:
+        return self.text
+
 
 
