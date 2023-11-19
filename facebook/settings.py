@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'users.apps.UsersConfig',
+    'rest_framework_simplejwt',
     'django_filters',
     'rest_framework',
     'posts.apps.PostsConfig',
@@ -82,6 +84,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'facebook.wsgi.application'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+    
+}
 
 
 # Database

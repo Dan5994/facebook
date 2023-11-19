@@ -4,6 +4,7 @@ from posts.serialozers import PostSerialazer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import pagination
 from posts.filter.filter_post import PostFilter
+from rest_framework.permissions import IsAuthenticated
 
 class PostPagination(pagination.PageNumberPagination):
     page_size = 2
@@ -12,6 +13,7 @@ class PostPagination(pagination.PageNumberPagination):
 
 
 class PostView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerialazer
     filter_backends = [PostFilter]
