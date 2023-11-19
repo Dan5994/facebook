@@ -1,0 +1,16 @@
+{% extends 'post/header.html'%}
+
+{% block title %}
+    <title>Редактирование поста</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Редактирование поста</h1>
+    <form action="{ url ('get') }" method="get" enctype="multipart/form-data">
+        {% for post in queryset%}
+            <li><a href="/posts/get/{{post.id}}">{{post.title}} </a></li>
+        {% endfor %}
+        <button onclick="window.location.href='create'">Создать пост</button>
+    </form>
+{% endblock %}
+
