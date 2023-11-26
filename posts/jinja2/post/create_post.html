@@ -1,0 +1,20 @@
+{% extends 'post/header.html'%}
+
+{% block title %}
+    <title>Создать пост</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Создать пост</h1>
+    <form action="{{ url ('create') }}" method="post" enctype="multipart/form-data">
+        <label>
+            <input type="text" name="title" placeholder="title">
+        </label>
+        <label>
+            <input type="text" name="text" placeholder="text">
+        </label>
+        <button type="submit">Отправить</button>
+
+    </form>
+
+{% endblock %}
