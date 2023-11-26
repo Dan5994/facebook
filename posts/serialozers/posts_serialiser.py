@@ -11,7 +11,7 @@ class PostSerialazer(serializers.Serializer):
     counter = serializers.IntegerField()
     cotegoru = serializers.CharField()
     created_at = serializers.DateTimeField(read_only = True)
-    comments = CommentSerialazer(many=True)
+    
     
     def create(self, validated_data):
         return Post.objects.create(**validated_data)

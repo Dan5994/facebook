@@ -13,12 +13,12 @@ class PostPagination(pagination.PageNumberPagination):
 
 
 class PostView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerialazer
-    filter_backends = [PostFilter]
+    # filter_backends = [PostFilter]
     # filterset_fields = ['cotegoru', 'created_at']
-    pagination_class = PostPagination
+    # pagination_class = PostPagination
 
 
     # def get_queryset(self):
