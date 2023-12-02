@@ -1,3 +1,4 @@
+from requests import Response
 from posts.models import Post
 from rest_framework import generics
 from posts.serialozers import PostSerialazer
@@ -5,6 +6,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import pagination
 from posts.filter.filter_post import PostFilter
 from rest_framework.permissions import IsAuthenticated
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+from facebook.celery import debug_task
 
 class PostPagination(pagination.PageNumberPagination):
     page_size = 2
@@ -13,9 +17,14 @@ class PostPagination(pagination.PageNumberPagination):
 
 
 class PostView(generics.ListCreateAPIView):
-    # permission_classes = [IsAuthenticated]
     queryset = Post.objects.all()
     serializer_class = PostSerialazer
+    # permission_classes = [IsAuthenticated]
+    @method_decorator(cache_page(60))
+    def get(self, request, *args, **kwargs):
+        print('Cache')
+        debug_task.delay()
+        return self.list(request, *args, **kwargs)
     # filter_backends = [PostFilter]
     # filterset_fields = ['cotegoru', 'created_at']
     # pagination_class = PostPagination
